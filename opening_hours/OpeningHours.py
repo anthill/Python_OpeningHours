@@ -13,12 +13,17 @@ print_oh.restype = c_char_p
 isopen = opening_hours.is_open_expended
 isopen.restype = c_int
 
+free = opening_hours.free_oh
+
 class OpeningHours:
     def __init__(self, expression):
         self.oh = build(c_char_p(expression))
 
+    def __del__(self):
+        free(c_voidp(self.oh))
+
     def __str__(self):
-        return str(print_oh(c_voidp(self.oh)))
+        return print_oh(c_voidp(self.oh))
 
     def is_open_expended(self, min, hour, day, month, year, day_of_week):
         return isopen(c_voidp(self.oh), c_int(min), c_int(hour), c_int(day), c_int(month), c_int(year), c_int(day_of_week))
