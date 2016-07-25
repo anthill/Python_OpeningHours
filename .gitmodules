@@ -1,0 +1,3 @@
+[submodule "C_OpeningHours"]
+	path = C_OpeningHours
+	url = https://github.com/anthill/C_OpeningHours
