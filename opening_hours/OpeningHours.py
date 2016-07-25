@@ -20,5 +20,8 @@ class OpeningHours:
     def __str__(self):
         return str(print_oh(c_voidp(self.oh)))
 
-    def is_open_expended(self, min, hour, day, month, year, day_of_week, day_of_year):
-        return isopen(c_voidp(self.oh), c_int(min), c_int(hour), c_int(day), c_int(month), c_int(year), c_int(day_of_week), c_int(day_of_year))
+    def is_open_expended(self, min, hour, day, month, year, day_of_week):
+        return isopen(c_voidp(self.oh), c_int(min), c_int(hour), c_int(day), c_int(month), c_int(year), c_int(day_of_week))
+
+    def is_open(self, date):
+        return self.is_open_expended(date.minute, date.hour, date.day, date.month - 1, date.year - 1900, date.weekday())
