@@ -15,6 +15,10 @@ if (len(sys.argv) > 1 and (sys.argv[1] == "build" or sys.argv[1] == "install")):
             sys.exit(1)
         sys.exit(0)
 
+if (len(sys.argv) > 1 and sys.argv[1] == "clean"):
+    if (call(["make", "-C", "C_OpeningHours", "fclean"])):
+        sys.exit(1)
+
 long_description = ''
 if os.path.exists('README.md'):
     long_description = codecs.open('README.md', encoding='UTF-8', mode='r').read()
