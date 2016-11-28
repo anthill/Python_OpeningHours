@@ -3,8 +3,9 @@
 from distutils.core import setup
 from distutils.extension import Extension
 from subprocess import call
+from codecs import open
+from os import path
 import sys
-import os
 
 if (len(sys.argv) > 1 and (sys.argv[1] == "build" or sys.argv[1] == "install")):
     if (sys.argv[1] == "install"):
@@ -20,8 +21,8 @@ if (len(sys.argv) > 1 and sys.argv[1] == "clean"):
         sys.exit(1)
 
 long_description = ''
-if os.path.exists('README.md'):
-    long_description = codecs.open('README.md', encoding='UTF-8', mode='r').read()
+if path.exists('README.md'):
+    long_description = open('README.md', encoding='UTF-8', mode='r').read()
 
 setup(
     name         = 'opening_hours',
