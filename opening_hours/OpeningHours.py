@@ -2,7 +2,7 @@
 
 from ctypes import cdll, c_char_p, c_voidp, c_int
 
-opening_hours = cdll.LoadLibrary("libopening-hours.so")
+opening_hours = cdll.LoadLibrary("C_OpeningHours/libopening-hours.so")
 
 build = opening_hours.build_opening_hours
 build.restype = c_voidp
