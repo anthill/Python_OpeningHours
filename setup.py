@@ -9,7 +9,7 @@ import sys
 
 if (len(sys.argv) > 1 and (sys.argv[1] == "build" or sys.argv[1] == "install")):
     if (sys.argv[1] == "install"):
-	if (call(["make", "-C", "C_OpeningHours", "install"])):
+        if (call(["make", "-C", "C_OpeningHours", "install"])):
             sys.exit(1)
     else:
         if (call(["make", "-C", "C_OpeningHours"])):
